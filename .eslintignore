@@ -1,0 +1,12 @@
+dist
+node_modules
+public
+.vscode
+.idea
+*.sh
+
+src/assets
+asr.aliyun.short.js
+.eslintrc.cjs
+.prettierrc.cjs
+.stylelintrc.cjs

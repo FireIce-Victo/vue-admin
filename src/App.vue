@@ -1,0 +1,23 @@
+<template>
+  <el-config-provider>
+    <router-view></router-view>
+  </el-config-provider>
+</template>
+
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+</style>

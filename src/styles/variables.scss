@@ -1,0 +1,55 @@
+// sidebar
+$menuText: #bfcbd9;
+$menuActiveText: #409EFF;
+$subMenuActiveText: #f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+$menuBg: #304156;
+$menuHover: #263445;
+$subMenuBg: #1f2d3d;
+$subMenuHover: #001528;
+$sideBarWidth: 210px;
+$pageLayout: 250px;
+// 自定义颜色
+$primaryDark: #0D1924;
+$primary: #132135;
+$primaryLight: #1C2A40;
+$base: #409EFF;
+$baseBorderColor: #00DEFF;
+$success: #00A877;
+$warning: #FFFF00;
+$danger: #DE4236;
+$white: #fff;
+$black: #000;
+$fontColor: #829BB8;
+$hoverColor: #394962;
+$borderColor: #314259;
+$orange: #FD9501;
+$ching: #00FFFF;
+$warnLevel0: #00BCBC; // 告警等级：低
+$warnLevel1: #1561b7; // 告警等级：提示
+$warnLevel2: #fff000; // 告警等级：普通
+$warnLevel3: #ff9000; // 告警等级：重要
+$warnLevel4: #f10000; // 告警等级：严重
+$warnStatus1: #bc1414; // 告警状态：待处理
+$warnStatus2: #ed8600; // 告警状态：处理中
+$warnStatus3: #2cad05; // 告警状态：已处理
+$warnStatus4: #aaaaaa; // 告警状态：误报/转维修
+
+$elBorderColor: #33445B;
+
+// 该组件有使用示例： src/layout/components/Sidebar/index.vue
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+  primaryDark: $primaryDark;
+  primary: $primary;
+  primaryLight: $primaryLight;
+  white: $white;
+  black: $black;
+  fontColor: $fontColor;
+}
