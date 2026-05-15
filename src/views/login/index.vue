@@ -1,51 +1,76 @@
 <template>
   <div class="login-container">
     <h3 class="login-title">Vue Admin</h3>
-    <el-form :rules="loginRules" label-width="80px" class="login-form">
+    <el-form
+      ref="loginFormRef"
+      :model="loginForm"
+      :rules="loginRules"
+      label-width="80px"
+      class="login-form"
+      @keyup.enter="handleLogin(loginFormRef)"
+    >
       <el-form-item label="用户名" prop="username">
         <el-input v-model="loginForm.username" placeholder="请输入用户名" />
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="loginForm.password" type="password" placeholder="请输入密码" show-password />
+        <el-input
+          v-model="loginForm.password"
+          type="password"
+          placeholder="请输入密码"
+          show-password
+        />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" class="login-button" @click="handleLogin">登录</el-button>
+        <el-button
+          type="primary"
+          class="login-button"
+          @click="handleLogin(loginFormRef)"
+          :loading="loading"
+          >登录</el-button
+        >
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script setup>
-import {  reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus';
+import { userStore } from '@/stores/modules/user';
 
 const router = useRouter();
+const store = userStore();
+const loading = ref(false);
+const loginFormRef = ref(null);
+
 const loginForm = reactive({
   username: '',
   password: ''
 });
 
 const loginRules = {
-  username: [
-    { message: '请输入用户名', trigger: 'blur' }
-  ],
-  password: [
-    { message: '请输入密码', trigger: 'blur' }
-  ]
+  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 };
 
-const handleLogin = () => {
-  // 模拟登录验证
-  // if (loginForm.username && loginForm.password) {
-  //   // 登录成功，跳转到管理后台
-  //   localStorage.setItem('token', 'mock-token');
-  //   ElMessage.success('登录成功');
-  //   router.push('/dashboard');
-  // } else {
-  //   ElMessage.error('请输入用户名和密码');
-  // }
-  router.push('/dashboard');
-  console.log(loginForm)
+const handleLogin = async formEl => {
+  await formEl.validate(valid => {
+    if (valid) {
+      loading.value = true;
+      store
+        .login(loginForm)
+        .then(() => {
+          ElMessage.success('登陆成功');
+          setTimeout(() => {
+            router.push('/');
+          }, 500);
+        })
+        .finally(() => {
+          loading.value = false;
+        });
+    }
+  });
 };
 </script>
 
@@ -68,14 +93,15 @@ const handleLogin = () => {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
     animation: pulse 15s ease-in-out infinite;
     z-index: 0;
   }
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0);
   }
   50% {

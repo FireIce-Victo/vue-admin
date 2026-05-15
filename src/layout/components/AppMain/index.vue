@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { useTagsViewStore } from '@/store';
+import { useTagsViewStore } from '@/stores';
 
 const tagsViewStore = useTagsViewStore();
 </script>

@@ -33,7 +33,7 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import SidebarItem from './SidebarItem.vue';
 import { Expand, Fold } from '@element-plus/icons-vue';
-import { useAppStore } from '@/store';
+import { useAppStore } from '@/stores';
 
 const appStore = useAppStore();
 

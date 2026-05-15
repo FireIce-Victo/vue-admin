@@ -3,7 +3,7 @@ import { ElMessage } from 'element-plus';
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ service.interceptors.request.use(
     // 例如：添加token
     const token = localStorage.getItem('token');
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = token;
     }
     return config;
   },
@@ -34,7 +34,7 @@ service.interceptors.response.use(
     const res = response.data;
 
     // 根据后端返回的状态码判断请求是否成功
-    if (res.code !== 200) {
+    if (res.status !== 200) {
       ElMessage.error(res.message || '请求失败');
       return Promise.reject(new Error(res.message || '请求失败'));
     }

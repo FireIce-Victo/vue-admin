@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Layout from '@/layout/index.vue';
+import { userStore } from '@/stores/modules/user';
+
 const modules = import.meta.glob('./modules/*.js', { eager: true });
 
 const moduleRoutes = Object.values(modules).map(module => module.default);
@@ -10,7 +12,7 @@ const routes = [
     name: 'login',
     component: () => import('@/views/login/index.vue'),
     meta: {
-      title: '登录',
+      title: '登录'
     }
   },
   {
@@ -27,13 +29,22 @@ const router = createRouter({
   scrollBehavior: () => ({ top: 0, left: 0 })
 });
 
-// 路由守卫：未登录跳转到登录页
-// router.beforeEach((to, from) => {
-//   if (to.path !== '/login') {
-//     return '/login'
-//   } else if (to.path === '/dashboard') {
-//     return '/dashboard';
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  const store = userStore();
+
+  if (to.path !== '/login') {
+    if (!store.loginStatus) {
+      next('/login');
+    } else {
+      next();
+    }
+  } else {
+    if (store.loginStatus) {
+      next('/dashboard');
+    } else {
+      next();
+    }
+  }
+});
 
 export default router;

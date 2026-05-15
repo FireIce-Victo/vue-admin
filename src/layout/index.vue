@@ -14,7 +14,7 @@
 import AppHeader from './components/AppHeader/index.vue';
 import AppSidebar from './components/AppSidebar/index.vue';
 import AppMain from './components/AppMain/index.vue';
-import { useAppStore } from '@/store';
+import { useAppStore } from '@/stores';
 import { computed } from 'vue';
 
 const appStore = useAppStore();

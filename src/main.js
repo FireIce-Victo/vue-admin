@@ -6,7 +6,7 @@ import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import { setupElIcons } from './plugins';
 import "virtual:svg-icons-register";
-import { setupStore } from './store';
+import { setupStore } from './stores';
 
 const app = createApp(App);
 
