@@ -1,7 +1,7 @@
-/* 全局样式重置 - Normalize CSS */
-@import "./common.scss";
-@import "./sidebar.scss";
-@import "./transition.scss";
+@use "./common.scss" as *;
+@use "./sidebar.scss" as *;
+@use "./transition.scss" as *;
+@use "./variables.scss" as *;
 
 body {
   height: 100%;

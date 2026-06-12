@@ -50,7 +50,7 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           javascriptEnabled: true,
-          additionalData: "@import '@/styles/variables.scss';",
+          additionalData: "@use '@/styles/variables.scss';",
         }
       }
     },

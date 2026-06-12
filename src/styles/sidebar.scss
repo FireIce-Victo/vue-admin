@@ -1,3 +1,5 @@
+@use "./variables.scss" as *;
+
 #app {
   .sidebar-container {
     transition: width 0.28s;

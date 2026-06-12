@@ -1,3 +1,5 @@
+@use "./variables.scss" as *;
+
 /*每个页面必须的最外层盒子必须添加该样式*/
 .app-container {
   padding: 20px;
