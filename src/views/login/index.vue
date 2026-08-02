@@ -74,7 +74,7 @@ const handleLogin = async (formEl) => {
       loading.value = true
       const params = {
         username: loginForm.username,
-        password: md5(loginForm.password)
+        password: loginForm.password
       }
       store
         .login(params)

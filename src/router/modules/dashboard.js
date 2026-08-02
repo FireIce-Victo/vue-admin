@@ -2,7 +2,7 @@ export default {
   path: '/',
   meta: {
     title: '首页',
-    icon: "dashboard"
+    icon: 'dashboard'
   },
   redirect: '/dashboard',
   children: [

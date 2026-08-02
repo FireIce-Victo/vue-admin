@@ -3,7 +3,7 @@ export default {
   name: 'UserManage',
   meta: {
     title: '用户管理',
-    icon: "dashboard"
+    icon: 'user'
   },
   redirect: '/user-manage/role-manage',
   children: [

@@ -3,16 +3,24 @@ export default {
   name: 'SystemManage',
   meta: {
     title: '系统管理',
-    icon: "dashboard"
+    icon: 'system'
   },
-  redirect: '/system-manage/basic-config',
+  redirect: '/system-manage/menu-manage',
   children: [
     {
-      path: 'basic-config',
-      name: 'BasicConfig',
-      component: () => import('@/views/systemManage/basicConfig/index.vue'),
+      path: 'menu-manage',
+      name: 'MenuManage',
+      component: () => import('@/views/systemManage/menuManage/index.vue'),
       meta: {
-        title: '基础配置'
+        title: '菜单管理'
+      }
+    },
+    {
+      path: 'log-manage',
+      name: 'LogManage',
+      component: () => import('@/views/systemManage/logManage/index.vue'),
+      meta: {
+        title: '操作日志'
       }
     },
     {

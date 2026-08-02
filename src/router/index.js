@@ -29,7 +29,15 @@ const router = createRouter({
   scrollBehavior: () => ({ top: 0, left: 0 })
 });
 
+// ========== 调试模式：true = 跳过登录校验，false = 恢复登录校验 ==========
+const DEBUG_SKIP_LOGIN = true
+
 router.beforeEach((to, from, next) => {
+  if (DEBUG_SKIP_LOGIN) {
+    next()
+    return
+  }
+
   const store = userStore();
 
   if (to.path !== '/login') {
