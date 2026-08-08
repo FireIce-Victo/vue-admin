@@ -1,12 +1,19 @@
 <template>
   <div class="map">
     <div ref="mapBox" class="map-box"></div>
-    <div class="controls">
-      <button @click="addMarker()">添加标记</button>
-      <button @click="drawTrack()">绘制轨迹</button>
-      <!-- <button @click="addCustomTileLayer">添加自定义瓦片图层</button> -->
-      <button @click="clearAllFeatures">清除标记与轨迹</button>
+    <div class="map-action">
+      <div class="action flex-center p-1">
+        <el-button class="action-btn" type="text" @click="addMarker()">添加标记</el-button>
+        <span class="line"></span>
+        <el-button class="action-btn" type="text" @click="drawTrack()">绘制轨迹</el-button>
+        <span class="line"></span>
+        <el-button class="action-btn" type="text" @click="clearAllFeatures">清除标记与轨迹</el-button>
+      </div>
     </div>
+    <!-- <div class="controls">
+      
+      
+    </div> -->
   </div>
 </template>
 
@@ -22,6 +29,7 @@ import { LineString, Point } from 'ol/geom';
 import { Style, Fill, Stroke, Text, Circle } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
+import { defaults } from 'ol/control';
 
 const mapBox = ref(null); // 地图容器DOM
 let map; // 地图实例
@@ -48,11 +56,13 @@ const initMap = () => {
     view: new View({
       center: fromLonLat([114.298572, 30.584355]),
       zoom: 12
+    }),
+    controls: defaults({
+      attribution: false,
+      rotate: false,
+      zoom: false
     })
   });
-
-  // addMarker()
-  // drawTrack()
 };
 
 onMounted(() => {
@@ -164,11 +174,45 @@ const clearAllFeatures = () => {
     bottom: 0;
   }
 
-  .controls {
-    margin-right: 8px;
-    padding: 6px 12px;
+  .map-action {
     position: absolute;
-    z-index: 1000;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    min-width: 300px;
+
+    .action {
+      background: white;
+      position: relative;
+      border-radius: 4px;
+
+      .line {
+        height: 10px;
+        border-left: 1px dashed #829BB8;
+      }
+
+      .action-btn {
+        padding: 5px;
+        margin: 0 5px;
+        color: #829BB8;
+
+        .item-icon {
+          color: #409EFF;
+        }
+
+        &:hover {
+          color: #409EFF;
+        }
+
+        &.is-disabled {
+          color: #33445b;
+
+          .item-icon {
+            color: #33445b;
+          }
+        }
+      }
+    }
   }
 }
 </style>

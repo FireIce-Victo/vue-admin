@@ -59,10 +59,10 @@ export default defineConfig(({ mode }) => {
       open: true,
       cors: true,
       proxy: {
+        // 保留 /api 前缀：后端所有路由（含 JWT 白名单 /api/login、/api/register）都挂在 /api 下
         '/api': {
           target: 'http://localhost:3008',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
+          changeOrigin: true
         }
       }
     },

@@ -5,30 +5,31 @@ export default {
     title: '系统管理',
     icon: 'system'
   },
-  redirect: '/system-manage/menu-manage',
+  order: 2,
+  redirect: '/system-manage/user-manage',
   children: [
     {
-      path: 'menu-manage',
-      name: 'MenuManage',
-      component: () => import('@/views/systemManage/menuManage/index.vue'),
+      path: 'user-manage',
+      name: 'UserManage',
+      component: () => import('@/views/systemManage/userManage/index.vue'),
       meta: {
-        title: '菜单管理'
+        title: '用户管理'
       }
     },
     {
-      path: 'log-manage',
-      name: 'LogManage',
-      component: () => import('@/views/systemManage/logManage/index.vue'),
+      path: 'role-manage',
+      name: 'RoleManage',
+      component: () => import('@/views/systemManage/roleManage/index.vue'),
       meta: {
-        title: '操作日志'
+        title: '角色管理'
       }
     },
     {
-      path: 'security',
-      name: 'Security',
-      component: () => import('@/views/systemManage/security/index.vue'),
+      path: 'permission-manage',
+      name: 'PermissionManage',
+      component: () => import('@/views/systemManage/permissionManage/index.vue'),
       meta: {
-        title: '安全设置'
+        title: '权限管理'
       }
     }
   ]

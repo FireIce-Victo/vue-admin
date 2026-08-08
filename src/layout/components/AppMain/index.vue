@@ -18,12 +18,12 @@ const tagsViewStore = useTagsViewStore();
 
 <style scoped lang="scss">
 .app-main {
-  height: calc(100% - 80px);
+  height: calc(100% - 50px);
   overflow-x: hidden;
   overflow-y: auto;
 }
 
 .fixed-heaader + .app-main {
-  padding-top: 50px;
+  padding-top: 40px;
 }
 </style>

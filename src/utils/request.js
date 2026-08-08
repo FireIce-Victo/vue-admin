@@ -3,7 +3,7 @@ import { ElMessage } from 'element-plus';
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: '/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ service.interceptors.request.use(
   (config) => {
     // 在发送请求之前做些什么
     // 例如：添加token
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('ACCESS_TOKEN');
     if (token) {
       config.headers.Authorization = token;
     }

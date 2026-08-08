@@ -4,7 +4,7 @@ import { userStore } from '@/stores/modules/user';
 
 const modules = import.meta.glob('./modules/*.js', { eager: true });
 
-const moduleRoutes = Object.values(modules).map(module => module.default);
+const moduleRoutes = Object.values(modules).map(module => module.default).sort((a,b) => a.order - b.order);
 
 const routes = [
   {
@@ -30,28 +30,27 @@ const router = createRouter({
 });
 
 // ========== 调试模式：true = 跳过登录校验，false = 恢复登录校验 ==========
-const DEBUG_SKIP_LOGIN = true
+const DEBUG_SKIP_LOGIN = false
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   if (DEBUG_SKIP_LOGIN) {
-    next()
-    return
+    return true
   }
 
   const store = userStore();
 
   if (to.path !== '/login') {
     if (!store.loginStatus) {
-      next('/login');
-    } else {
-      next();
-    }
+      // next('/login');
+      return '/login'
+    } 
+    return true
   } else {
     if (store.loginStatus) {
-      next('/dashboard');
-    } else {
-      next();
-    }
+      // next('/dashboard');
+      return '/dashboard'
+    } 
+    return true
   }
 });
 

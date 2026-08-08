@@ -31,8 +31,8 @@
           <el-button
             type="primary"
             class="login-button"
-            @click="handleLogin(loginFormRef)"
             :loading="loading"
+            @click="handleLogin(loginFormRef)"
           >
             登录
           </el-button>
@@ -49,7 +49,6 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import md5 from 'md5'
 import { userStore } from '@/stores/modules/user'
 import ChangePwdDialog from './ChangePwdDialog.vue'
 
@@ -83,6 +82,9 @@ const handleLogin = async (formEl) => {
           setTimeout(() => {
             router.push('/')
           }, 500)
+        })
+        .catch(err => {
+          ElMessage(err.message || "登录失败")
         })
         .finally(() => {
           loading.value = false

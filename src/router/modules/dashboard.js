@@ -1,9 +1,9 @@
 export default {
   path: '/',
   meta: {
-    title: '首页',
     icon: 'dashboard'
   },
+  order: 1,
   redirect: '/dashboard',
   children: [
     {

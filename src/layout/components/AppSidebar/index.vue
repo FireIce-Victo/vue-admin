@@ -18,7 +18,7 @@
         <div class="hamburger-btn">
           <el-menu-item index="1" @click="toggleSidebar">
             <el-icon :size="18">
-              <component :is="!collapsed ? Expand : Fold" />
+              <component :is="!collapsed ? Fold : Expand" />
             </el-icon>
             <span style="padding-left: 5px;">{{ collapsed ? '展开菜单' : '关闭菜单' }}</span>
           </el-menu-item>

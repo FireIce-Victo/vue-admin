@@ -74,12 +74,13 @@ onBeforeMount(() => {
 
 <style lang="scss" scoped>
 .app-breadcrumb.el-breadcrumb {
-  line-height: 50px;
+  line-height: 30px;
   margin-left: 5px;
 
   .no-redirect {
-    color:#fff;
+    color:#232020;
     cursor: text;
+    font-size: 18px;
   }
 }
 </style>
