@@ -3,11 +3,11 @@
     <div ref="mapBox" class="map-box"></div>
     <div class="map-action">
       <div class="action flex-center p-1">
-        <el-button class="action-btn" type="text" @click="addMarker()">添加标记</el-button>
+        <el-button class="action-btn" link @click="addMarker()">添加标记</el-button>
         <span class="line"></span>
-        <el-button class="action-btn" type="text" @click="drawTrack()">绘制轨迹</el-button>
+        <el-button class="action-btn" link @click="drawTrack()">绘制轨迹</el-button>
         <span class="line"></span>
-        <el-button class="action-btn" type="text" @click="clearAllFeatures">清除标记与轨迹</el-button>
+        <el-button class="action-btn" link @click="clearAllFeatures">清除标记与轨迹</el-button>
       </div>
     </div>
     <!-- <div class="controls">

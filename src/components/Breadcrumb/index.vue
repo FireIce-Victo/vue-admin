@@ -76,6 +76,7 @@ onBeforeMount(() => {
 .app-breadcrumb.el-breadcrumb {
   line-height: 30px;
   margin-left: 5px;
+  font-size: 18px;
 
   .no-redirect {
     color:#232020;

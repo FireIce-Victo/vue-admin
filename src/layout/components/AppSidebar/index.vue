@@ -34,6 +34,7 @@ import { useRouter } from 'vue-router';
 import SidebarItem from './SidebarItem.vue';
 import { Expand, Fold } from '@element-plus/icons-vue';
 import { useAppStore } from '@/stores';
+import { filterRoutesByPerms } from '@/utils/permission';
 
 const appStore = useAppStore();
 
@@ -47,7 +48,8 @@ const activeMenu = computed(() => router.currentRoute.value.path);
 
 const menuRoutes = computed(() => {
   const rootRoute = router.options.routes.find(r => r.path === '/');
-  return rootRoute?.children || [];
+  const children = rootRoute?.children || [];
+  return filterRoutesByPerms(children);
 });
 
 function toggleSidebar() {

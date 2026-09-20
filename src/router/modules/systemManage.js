@@ -13,7 +13,8 @@ export default {
       name: 'UserManage',
       component: () => import('@/views/systemManage/userManage/index.vue'),
       meta: {
-        title: '用户管理'
+        title: '用户管理',
+        perms: ['system:user:page']
       }
     },
     {
@@ -21,7 +22,8 @@ export default {
       name: 'RoleManage',
       component: () => import('@/views/systemManage/roleManage/index.vue'),
       meta: {
-        title: '角色管理'
+        title: '角色管理',
+        perms: ['system:role:page']
       }
     },
     {
@@ -29,7 +31,8 @@ export default {
       name: 'PermissionManage',
       component: () => import('@/views/systemManage/permissionManage/index.vue'),
       meta: {
-        title: '权限管理'
+        title: '权限管理',
+        perms: ['system:permission:page']
       }
     }
   ]

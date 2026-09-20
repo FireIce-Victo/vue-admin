@@ -11,7 +11,8 @@ export default {
       name: 'MapShow',
       component: () => import('@/views/mapShow/index.vue'),
       meta: {
-        title: '地图展示'
+        title: '地图展示',
+        perms: ['map:show:page']
       }
     }
   ]

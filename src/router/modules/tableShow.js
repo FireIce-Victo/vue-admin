@@ -11,7 +11,8 @@ export default {
       name: 'TableShow',
       component: () => import('@/views/tableShow/index.vue'),
       meta: {
-        title: '表格展示'
+        title: '表格展示',
+        perms: ['table:show:page']
       }
     }
   ]

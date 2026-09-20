@@ -102,7 +102,7 @@ function renderLineChart() {
   lineChart.setOption({
     tooltip: { trigger: 'axis' },
     legend: { bottom: 0, textStyle: { color: '#666' } },
-    grid: { left: '3%', right: '4%', top: '8%', bottom: '12%', containLabel: true },
+    grid: { left: '3%', right: '4%', top: '8%', bottom: '12%' },
     xAxis: {
       type: 'category',
       boundaryGap: false,

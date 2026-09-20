@@ -11,7 +11,8 @@ export default {
       name: 'ChartsShow',
       component: () => import('@/views/chartsShow/index.vue'),
       meta: {
-        title: '可视化图表'
+        title: '可视化图表',
+        perms: ['charts:show:page']
       }
     }
   ]

@@ -77,8 +77,9 @@ const handleLogin = async (formEl) => {
       }
       store
         .login(params)
-        .then(() => {
+        .then(async () => {
           ElMessage.success('登陆成功')
+          try { await store.loadPerms() } catch { /* 权限加载失败不阻塞登录 */ }
           setTimeout(() => {
             router.push('/')
           }, 500)

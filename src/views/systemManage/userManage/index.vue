@@ -397,7 +397,14 @@ async function handleDirectPerm(row) {
     ])
     // 直授可选范围为 button/api 类型
     permOptions.value = permRes.data.filter((p) => p.type === 'button' || p.type === 'api')
-    directPermList.value = listRes.data
+    // 后端返回 snake_case(permission_id/expires_at),映射为前端 camelCase,保证展示与去重校验正确
+    directPermList.value = (listRes.data || []).map((p) => ({
+      permissionId: p.permission_id,
+      code: p.code,
+      name: p.name,
+      effect: p.effect,
+      expiresAt: p.expires_at
+    }))
   } finally {
     permLoading.value = false
   }
